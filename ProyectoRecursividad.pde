@@ -1,12 +1,11 @@
-// <a href="https://es.lovepik.com/images/illustration-star-light.html">Luz Estelar  by Lovepik.com</a>
-
 import java.util.Random;
 import gifAnimation.*;
 
 void setup() {
   fullScreen();
-  fondo = new Gif (this, "data/beyond the other side");
-  fondo.loop;
+
+  fondo = new Gif (this, "data/beyond the other side.gif");
+  fondo.loop();
 
   matriz = generarBurbujas(matriz);
   int intentos = 0;
@@ -26,8 +25,30 @@ void setup() {
 
 void draw() {
   background(255);
-  image(fondo, 0, 0, width, height);
 
-  crearTablero(filas, columnas, lado);
-  mostrarBurbujas(matrizBoolean, lado);
+  switch (escenaActual) {
+  case MENU:
+    print("Menu");
+    break;
+  case RECURSIVO:
+    print("Recursivo");
+    image(fondo, 0, 0, width, height);
+
+    crearTablero(filas, columnas, lado);
+    mostrarBurbujas(matrizBoolean, lado);
+    break;
+  case ITERATIVO:
+    print("Iterativo");
+    break;
+  }
+}
+
+void keyPressed() {
+  if (keyCode == LEFT) {
+    escenaActual = Escena.RECURSIVO;
+  } else if (keyCode == RIGHT) {
+    escenaActual = Escena.ITERATIVO;
+  } else if (keyCode == DOWN) {
+    escenaActual = Escena.MENU;
+  }
 }
