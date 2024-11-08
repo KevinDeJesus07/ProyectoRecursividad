@@ -110,6 +110,7 @@ int contarCeldasConBurbuja(int[][] matriz) {
  *               del tablero.
  */
 void mostrarBurbujas(boolean[][] matriz, int lado) {
+  lado = obtenerTamañoCelda(filas, columnas, lado, maximoAncho, maximoAlto);
   fill(0);
   textSize(lado * 0.8f);
 

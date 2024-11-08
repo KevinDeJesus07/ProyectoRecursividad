@@ -1,8 +1,12 @@
+// <a href="https://es.lovepik.com/images/illustration-star-light.html">Luz Estelar  by Lovepik.com</a>
+
 import java.util.Random;
+import gifAnimation.*;
 
 void setup() {
   fullScreen();
-  fondo = loadImage("data/archipielagoSabaody.png");
+  fondo = new Gif (this, "data/beyond the other side");
+  fondo.loop;
 
   matriz = generarBurbujas(matriz);
   int intentos = 0;
