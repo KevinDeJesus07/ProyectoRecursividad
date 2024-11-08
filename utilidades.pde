@@ -35,8 +35,8 @@ void mostrarMatrix(boolean[][] matrix) {
  *               y tiene al menos una fila y una columna.
  * @return Una nueva matriz que es una copia de la matriz original.
  */
-int[][] copiarMatriz(int[][] matriz) {
-  int[][] copia = new int[matriz.length][matriz[0].length];
+boolean[][] copiarMatriz(boolean[][] matriz) {
+  boolean[][] copia = new boolean[matriz.length][matriz[0].length];
   for (int i = 0; i < matriz.length; i++) {
     for (int j = 0; j < matriz[0].length; j++) {
       copia[i][j] = matriz[i][j];
@@ -66,6 +66,18 @@ boolean[][] convertirMatrizABoolean(int[][] matriz) {
   return matrizBoolean;
 }
 
+int[][] convertirMatrizAInt(boolean[][] matriz) {
+  int[][] matrizInt = new int[matriz.length][matriz[0].length];
+  
+  for (int i = 0; i < matriz.length; i++) {
+    for (int j = 0; j < matriz[0].length; j++) {      
+      matrizInt[i][j] = (matriz[i][j]) ? 1 : 0;
+    }
+  }
+  return matrizInt;
+}
+
+
 /**
 * Genera un 1 o un 0 basado en una probabilidad específica que está entre dos valores dados.
 *
@@ -73,10 +85,10 @@ boolean[][] convertirMatrizABoolean(int[][] matriz) {
 * @param probabilidadMaxima La probabilidad máxima de generar un 1 (valor entre 0.0 y 1.0).
 * @return 1 con la probabilidad dada, de lo contrario 0.
 */
-int generarValor(float probabilidadMinima, float probabilidadMaxima) {
+boolean generarValor(float probabilidadMinima, float probabilidadMaxima) {
   Random random = new Random();
   float probabilidad = probabilidadMinima + random.nextFloat() * (probabilidadMaxima - probabilidadMinima);
-  return (random.nextFloat() <= probabilidad) ? 1 : 0;
+  return random.nextFloat() <= probabilidad;
 }
 
 /**
@@ -99,7 +111,7 @@ int generarValor(float probabilidadMinima, float probabilidadMaxima) {
 * @return true si la matriz es válida (cumple con los criterios de burbujas y 
 *         celdas ocupadas), false en caso contrario.
 */
-boolean matrizEsValida(int[][] matriz, int burbujasMinimas, int burbujasMaximas, float probabilidadMinima, float probabilidadMaxima) {
+boolean matrizEsValida(boolean[][] matriz, int burbujasMinimas, int burbujasMaximas, float probabilidadMinima, float probabilidadMaxima) {
   int celdasMinimas = (int) (matriz.length * matriz[0].length * probabilidadMinima);
   int celdasMaximas = (int) (matriz.length * matriz[0].length * probabilidadMaxima);
   

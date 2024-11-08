@@ -43,6 +43,7 @@ void crearTablero(int filas, int columnas, int lado) {
         stroke(0);
         fill(255);
         rect(x, y, lado, lado);
+        
       }
     }
 }
